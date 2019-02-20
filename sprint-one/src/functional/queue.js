@@ -11,7 +11,6 @@ var Queue = function() {
     index = index + 1;
     storage[index] = value;
     length = index + 1;
-    console.log(storage);
   };
 
   someInstance.dequeue = function() {
@@ -32,7 +31,6 @@ var Queue = function() {
       index = index - 1;
     }
     return value;
-     console.log(storage);
   };
 
   someInstance.size = function() {
