@@ -15,14 +15,14 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    var removedNode = list.head;
+    var removedNode = list.head || list.tail;
     list.head = removedNode.next; //move nametag head to next node
     removedNode.next = null;
     return removedNode.value;   
   };
 
   list.contains = function(target) {
-    
+     
     
   };
 
