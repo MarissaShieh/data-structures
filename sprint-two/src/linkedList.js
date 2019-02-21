@@ -1,3 +1,5 @@
+//testing our git understanding, will remove later.
+
 var LinkedList = function() {
   var list = {};
   list.head = null;
