@@ -25,8 +25,34 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-     
+    if (!list.head) {
+      return false;
+    }
     
+    var currentNode = list.head;
+    var isFound = false;
+    var isNotTail = true;
+    console.log('in contains');
+    while (isNotTail && !isFound) {
+      console.log('in the while loop'+currentNode);
+      if (target === currentNode.value) { 
+        console.log('in the if statement' + currentNode);
+        isFound = true;
+      }
+      console.log('currentNode: ' + currentNode.value);
+      
+      if (currentNode.next) {
+        currentNode = currentNode.next;
+      } else {
+        isNotTail = false;
+      }
+    }
+
+    
+ 
+    console.log("isFound: "+isFound);
+    return isFound;    
+
   };
 
   return list;
