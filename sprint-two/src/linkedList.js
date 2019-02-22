@@ -7,15 +7,18 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     var newNode = Node(value);
-    newNode.next = null; //our new tail
-    list.tail = newNode; //our new tail
+    newNode.next = null; //setting our new tail node's pointer
+    if (list.tail) {
+      list.tail.next = newNode;
+    }
+    list.tail = newNode; //setting Tail tag to our new tail node
     if (list.head === null) {
       list.head = newNode;    
     }
   };
 
   list.removeHead = function() {
-    var removedNode = list.head || list.tail;
+    var removedNode = list.head;
     list.head = removedNode.next; //move nametag head to next node
     removedNode.next = null;
     return removedNode.value;   
