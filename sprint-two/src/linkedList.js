@@ -1,4 +1,4 @@
-//testing our git understanding, will remove later.
+//testing comment
 
 var LinkedList = function() {
   var list = {};
