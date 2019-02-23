@@ -12,9 +12,10 @@ var BinarySearchTree = function(value) {
 
 BinarySearchTree.prototype.insert = function(value) {
   var newNode = BinarySearchTree(value);
-  if(!this) { //catches edge case if there is no node (this = undefined)
-    this = newNode;
-  } 
+  //catches edge case if there is no node (this = undefined)
+  // if(this.value === undefined) { 
+  //   this.value = value;
+  // } 
   
   var insertRecursive = function(node){
     if (node.value > value){
