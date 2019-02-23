@@ -34,22 +34,30 @@ BinarySearchTree.prototype.contains = function(target) {
     var isFound = false;
   
     var containsRecursive = function(node){
-    if (node.value===target) {
-      return true;
-    }
-    else {
-      isFound = isFound || recursive check left branch || recursive check right branch
-      if (node.left === null){
-        node.left = newNode;
-      } else {
-        containsRecursive(node.left);
+      if (node.value===target) {
+        return true;
       }
-      
-    }
-  }
+      else {
+        var left;
+        var right;
+        if (node.left !== null) {
+          console.log("in here");
+          left = containsRecursive(node.left);
+        } else if (node.left === null) {
+          return false;
+        } else if (node.right !== null) {
+          right = containsRecursive(node.right);
+        } else if (node.right === null) {
+          return false;
+        } 
+        console.log("isfound, left, right " + isFound + ", " + left + ", " + right);
+        isFound = isFound || left || right;
+      }
+      return isFound;
+    };
+    
   containsRecursive(this);
-  
-  
+  return isFound;
 };
 
 
