@@ -34,25 +34,25 @@ BinarySearchTree.prototype.contains = function(target) {
     var isFound = false;
   
     var containsRecursive = function(node){
-      if (node.value===target) {
+      if (node.value === target) {
         return true;
       }
       else {
-        var left;
-        var right;
+        var left = false;
+        var right = false;
         if (node.left !== null) {
-          console.log("in here");
           left = containsRecursive(node.left);
-        } else if (node.left === null) {
-          return false;
-        } else if (node.right !== null) {
+        }
+        if (node.right !== null) {
           right = containsRecursive(node.right);
-        } else if (node.right === null) {
-          return false;
         } 
-        console.log("isfound, left, right " + isFound + ", " + left + ", " + right);
+        else {
+          return false;  //isFound = false which is returned from calling containsRecursive, go back up the branches
+        }
+
         isFound = isFound || left || right;
       }
+      
       return isFound;
     };
     
