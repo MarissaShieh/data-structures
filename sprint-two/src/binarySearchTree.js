@@ -58,27 +58,17 @@ BinarySearchTree.prototype.contains = function(target) {
 };
 
 
-BinarySearchTree.prototype.depthFirstLog = function(func) {
-  //func = func || _.identity; // _.identity(value)//guarantees you always have a function (func does not exist) === false
-  //func.call(this, arguments);
-  
+BinarySearchTree.prototype.depthFirstLog = function(func) {  
   var depthLogRecursive = function(node){
-    console.log(node.value);
-    func.apply(this, arguments);
-    console.log(func.apply(this, arguments));
-    console.log("this is : "+this.value);
-      
+    func(node.value); //works fine, if func = function(value) { array.push(value);}
+    //func.call(node); //only works if func = function() { array.push(this.value);}
     if (node.left) {
       depthLogRecursive(node.left);
-    }
-    if (node.right) {
+    } if (node.right) {
       depthLogRecursive(node.right);
-    } else {
-      console.log("endwalk");
-    }
-
+    } 
   };
-  depthLogRecursive(this);  
+  depthLogRecursive(this);  //this binds to the entire tree when the function is invoked
 };
 
 
