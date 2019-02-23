@@ -3,6 +3,7 @@ describe('binarySearchTree', function() {
 
   beforeEach(function() {
     binarySearchTree = BinarySearchTree(5);
+    binarySearchTree2 = BinarySearchTree('c');
   });
 
   it('should have methods named "insert", "contains", and "depthFirstLog', function() {
@@ -19,6 +20,18 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.left.right.value).to.equal(3);
     expect(binarySearchTree.right.left.value).to.equal(6);
   });
+
+//Our own unit test
+  it('should insert string values at the correct location in the tree', function() {
+    binarySearchTree2.insert('a');
+    binarySearchTree2.insert('b');
+    binarySearchTree2.insert('e');
+    binarySearchTree2.insert('d');
+    expect(binarySearchTree2.left.right.value).to.equal('b');
+    expect(binarySearchTree2.right.left.value).to.equal('d');
+  });
+  
+  
 
   it('should have a working "contains" method', function() {
     binarySearchTree.insert(2);
@@ -37,4 +50,8 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+  
+  
+  
+  
 });
