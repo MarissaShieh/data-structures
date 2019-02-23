@@ -32,7 +32,6 @@ BinarySearchTree.prototype.insert = function(value) {
 
 BinarySearchTree.prototype.contains = function(target) {
     var isFound = false;
-  
     var containsRecursive = function(node){
       if (node.value === target) {
         return true;
@@ -40,19 +39,17 @@ BinarySearchTree.prototype.contains = function(target) {
       else {
         var left = false;
         var right = false;
-        if (node.left !== null) {
+        if (node.left) {
           left = containsRecursive(node.left);
         }
-        if (node.right !== null) {
+        if (node.right) {
           right = containsRecursive(node.right);
         } 
         else {
           return false;  //isFound = false which is returned from calling containsRecursive, go back up the branches
         }
-
         isFound = isFound || left || right;
       }
-      
       return isFound;
     };
     
@@ -61,15 +58,44 @@ BinarySearchTree.prototype.contains = function(target) {
 };
 
 
-BinarySearchTree.prototype.depthFirstLog = function() {};
+BinarySearchTree.prototype.depthFirstLog = function(func) {
+  //func = func || _.identity; // _.identity(value)//guarantees you always have a function (func does not exist) === false
+  //func.call(this, arguments);
+  
+  var depthLogRecursive = function(node){
+    console.log(node.value);
+    func.apply(this, arguments);
+    console.log(func.apply(this, arguments));
+    console.log("this is : "+this.value);
+      
+    if (node.left) {
+      depthLogRecursive(node.left);
+    }
+    if (node.right) {
+      depthLogRecursive(node.right);
+    } else {
+      console.log("endwalk");
+    }
+
+  };
+  depthLogRecursive(this);  
+};
 
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *  
+ * insert() has O(log n) because when traversing, you discard half every time 
+ * (it's the opposite of n squared) 
+ * 
+ * contains() has O(log n) because you discard half the items at every pass
+ *
+ * depthFirstLog() has O(n) linear time complexity because you must hit every node
  */
 
 
-// var binarySearchTree = Tree(value);
-// console.log("binarySearchTree value: "+binarySearchTree.value);
-  
+
+//_.identity = function(value) { return value; } //makes non function inputs into functions
+// obj.extends(method)
+// _.extend(obj, methods)
