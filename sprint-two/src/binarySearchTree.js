@@ -30,7 +30,27 @@ BinarySearchTree.prototype.insert = function(value) {
   insertRecursive(this);
 };
 
-BinarySearchTree.prototype.contains = function() {};
+BinarySearchTree.prototype.contains = function(target) {
+    var isFound = false;
+  
+    var containsRecursive = function(node){
+    if (node.value===target) {
+      return true;
+    }
+    else {
+      isFound = isFound || recursive check left branch || recursive check right branch
+      if (node.left === null){
+        node.left = newNode;
+      } else {
+        containsRecursive(node.left);
+      }
+      
+    }
+  }
+  containsRecursive(this);
+  
+  
+};
 
 
 BinarySearchTree.prototype.depthFirstLog = function() {};
