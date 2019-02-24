@@ -16,10 +16,7 @@ Graph.prototype.addNode = function(value) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(target) {
-  for (let key in this.directory){
-    return key === ''+target ? true : false;
-  } 
-  return false; //handles if this (aka Graph) is empty
+  return this.directory.hasOwnProperty(''+target)? true : false;
 };
 
 // Removes a node from the graph.
