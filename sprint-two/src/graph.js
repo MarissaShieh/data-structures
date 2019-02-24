@@ -3,8 +3,7 @@
 // Instantiate a new graph
 var Graph = function(value) {
   //var obj = Object.create(Graph.prototype); //done for us because pseudoclassical "new" keyword
-  Graph.prototype.directory = []; //each node value in here
-  //^^Make directory an object instead
+  Graph.prototype.directory = {}; //each node value in here
 };
 
 // Add a node to the graph, passing in the node's value.
@@ -12,15 +11,14 @@ Graph.prototype.addNode = function(value) {
   var newNode = {}; 
   newNode.value = value;
   newNode.neighbors = {};
-  this.directory.push(value);
+  this.directory[newNode.value] = newNode;
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(target) {
-  if (this.directory.indexOf(target) >= 0) {
-    return true;
+  for (let key in this.directory){
+    return key === ''+target ? true : false;
   }
-  return false;
 };
 
 // Removes a node from the graph.
