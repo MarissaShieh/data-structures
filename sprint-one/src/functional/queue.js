@@ -6,7 +6,6 @@ var Queue = function() {
   var index = -1;
   var length = index + 1;
   // Implement the methods below
-
   someInstance.enqueue = function(value) {
     index = index + 1;
     storage[index] = value;
