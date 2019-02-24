@@ -3,28 +3,25 @@ class Stack {
   // but try not not reference your old code in writing the new style.
   constructor() {
     this.storage = {};
-    this.count = 0;
+    this.index = -1;
+    this.length = this.index + 1;
   }
 
-  push(value) {
-    this.storage[this.count] = value;
-    this.count++;
+  push(value){
+    this.index = this.index + 1;
+    this.storage[this.index] = value;
+    this.length = this.length + 1;
   }
 
-  pop() {
-    if (this.count === 0) {
-      return undefined;
-    } 
-    
-    var data = this.storage[this.count-1]; //the element at the top of the stack
-    this.count--;
-    delete this.storage[this.count];
-    return data;
+  pop(){
+    if (this.length >= 1) {
+      var value = this.storage[this.index];
+      delete this.storage[this.index];
+      this.index = this.index - 1;
+      this.length = this.length - 1;
+      return value;
+    }
   }
 
-  size() {
-    return this.count;
-  }
-
-  
-}
+  size(){
+    return this.length;

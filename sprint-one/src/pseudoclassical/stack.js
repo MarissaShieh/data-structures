@@ -1,24 +1,24 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+// Hey! Rewrite in the new style. Your code will wind up looking very similar,
+// but try not not reference your old code in writing the new style.
   this.storage = {};
-  this.count = 0;
+  this.index = -1;
+  this.length = this.index + 1;
 };
-
-
 Stack.prototype.push = function(value) {
-  this.storage[this.count] = value;
-  this.count++;
-}; 
-
-Stack.prototype.pop = function() {
-  if (this.count === 0) {
-    return undefined;
-  }  
-  this.count--;
-  return this.storage[this.count];
+  this.index = this.index + 1;
+  this.storage[this.index] = value;
+  this.length = this.length + 1;
 };
-
+Stack.prototype.pop = function() {
+  if (this.length >= 1){
+    var value = this.storage[this.index];
+    delete this.storage[this.index];
+    this.index = this.index - 1;
+    this.length = this.length - 1;
+    return value;
+  }
+};
 Stack.prototype.size = function() {
-  return this.count;
+  return this.length;
 };

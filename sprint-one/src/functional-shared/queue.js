@@ -4,46 +4,33 @@ var Queue = function() {
 
   var someInstance = {};
   someInstance.storage = {};
-  someInstance.count = 0;
-
+  someInstance.index = -1;
+  someInstance.length = someInstance.index + 1;
   _.extend(someInstance, queueMethods);
-
   return someInstance;
 };
 
 var queueMethods = {
-
   enqueue: function(value) {
-    this.storage[this.count] = value;
-    this.count++;
-  },
-
-  dequeue: function() {
-    var data = this.storage[0];
-    
-    if (this.count === 0) {
-      return undefined;
+    this.index = this.index + 1;
+    this.storage[this.index] = value;
+    this.length = this.length + 1;
+  }, dequeue: function() {
+    var value = this.storage[0];
+    if (this.length >= 1) {
+      for (let key in this.storage) {
+        if (parseInt(key)) {
+          key = parseInt(key);
+          this.storage[key - 1] = this.storage[key];
+        }	
+      }
+      delete this.storage[-1];
+      delete this.storage[this.index];
+      this.index = this.index - 1;
+      this.length = this.length - 1;
+      return value;	
     }
-    for (var kk = 0; kk < this.count; kk++) {
-      this.storage[kk] = this.storage[kk+1];
-    }
-    this.count--;
-    delete this.storage[this.count];
-
-    return data; 
-  }, 
-
-  size: function() {
-    return this.count;
+  }, size: function() {
+    return this.length;
   }
-
-
 };
-
-
-//for functional shared, we use these keywords. We still create an empty object, return it. 
-//this
-//extend
-
-//you will defined your object as an empty object (someInstance)
-//then put all your object methods in another object 
