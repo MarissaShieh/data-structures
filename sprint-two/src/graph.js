@@ -18,11 +18,15 @@ Graph.prototype.addNode = function(value) {
 Graph.prototype.contains = function(target) {
   for (let key in this.directory){
     return key === ''+target ? true : false;
-  }
+  } 
+  return false; //handles if this (aka Graph) is empty
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
+  if (this.contains(value)){
+    delete this.directory[''+value];
+  }
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  
