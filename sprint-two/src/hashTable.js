@@ -19,7 +19,7 @@ HashTable.prototype.insert = function(k, v) {
   }
   if(doesntHaveThisKey) {
     var tuple = [k,v];
-  this._storage.get(index).push(tuple);
+    this._storage.get(index).push(tuple);
   }
 };
 
@@ -50,6 +50,13 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * .insert: worst case: O(n) if everything ended up in the same spot in the array
+ * ^However, assuming an average case and good hash function, O(1)
+ *
+ * .retrieve: also worst case O(n) for same reason as .insert's. Average case O(1)
+ * .remove: same as above. Worse case O(n), average case O(1)
+ *
  */
 
 
