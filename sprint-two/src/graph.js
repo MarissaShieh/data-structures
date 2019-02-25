@@ -56,11 +56,12 @@ Graph.prototype.removeEdge = function(fromValue, toValue) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(func) {
-  //this.directory.forEach(func);
+  for(let key in this.directory) {
+    func(this.directory[key].value);
+  }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-// learn.makerpass recommend reading wiki: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
 
