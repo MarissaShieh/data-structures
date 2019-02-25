@@ -63,5 +63,17 @@ Graph.prototype.forEachNode = function(func) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * .addNode(val): constant time O(1) because you just add to Graph's directory {}
+ * .contains(val): linear O(1): you loop through Graph.directory to see if specified key exists
+ * .removeNode(val): O(n^2): First you loop through Graph.directory to see if the node exists. 
+ * If it does, go through and delete the edge b/w the soon-to-be-deleted node and the other nodes. 
+ * Note: time complexity is just O(n) if you assume you never get asked to delete a non-existent node
+ *
+ * .hasEdge(fromVal, toVal): O(n) because you loop through all the edges of the fromNode
+ * .addEdge(toVal, fromVal): O(1) just adding a new key:value pair to two objects
+ * .removeEdge(toVal, fromVal): O(1) removing key:value pair from two objects
+ * .forEachNode(func): O(1) because you have to go through Graph.directory and do the same to each node
+ *
  */
 
