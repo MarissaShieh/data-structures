@@ -12,11 +12,19 @@ HashTable.prototype.insert = function(k, v) {
   }
   var tuple = [k,v];
   this._storage[index].push(tuple);
+  //needs to loop and overwrite old string / value
 };
 
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(index);
+  var value;
+  var bucket = this._storage.get(index);
+  for(let i = 0; i<bucket.length; i++){
+    if(bucket[i][0]===k){
+      value = bucket[i][1];
+    }
+  }
+  return value;
 };
 
 HashTable.prototype.remove = function(k) {
