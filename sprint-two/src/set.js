@@ -20,4 +20,10 @@ setPrototype.remove = function(item) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * .add(item): O(1) constant: adding one value into object
+ * .contains(item): O(n) linear: need to loop through object and see
+ * if target item is there
+ *  .remove(item): O(1) constant: delete one value from object
+ *
  */
