@@ -56,4 +56,15 @@ var getIndexBelowMaxForKey = function(str, max) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ *
+ * limitedArray.get: O(1): linear, returning the value at specified array index
+ * limitedArray.set: O(1): linear, setting value at specified index in array
+ * limitedArray.each: O(n): constant, need to run through and do callback on each
+ * element in the array
+ *
+ * checkLimit: O(1): no loops involved
+ *
+ * getIndexBelowMaxForKey: O(n) constant because each letter in the string is getting
+ * transformed into number for the final hash value
+ *
  */
