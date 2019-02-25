@@ -29,12 +29,17 @@ Graph.prototype.removeNode = function(value) {
 // Returns a boolean indicating whether two specified nodes are connected.  
 // Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromValue, toValue) {
+  fromValue = ''+fromValue;
+  toValue = ''+toValue;
+  return this.directory[fromValue].neighbors.hasOwnProperty(toValue);
 };
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromValue, toValue) {
-  
-
+  fromValue = ''+fromValue;
+  toValue = ''+toValue;
+  this.directory[fromValue].neighbors[toValue] = this.directory[toValue];
+  this.directory[toValue].neighbors[fromValue] = this.directory[fromValue];
 };
 
 // Remove an edge between any two specified (by value) nodes.
