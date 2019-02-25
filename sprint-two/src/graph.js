@@ -21,8 +21,12 @@ Graph.prototype.contains = function(target) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
+  value = ''+value;
   if (this.contains(value)){
-    delete this.directory[''+value];
+    for(let nodeName in this.directory[value].neighbors){
+      delete this.directory[nodeName].neighbors[value];
+    }
+    delete this.directory[value];
   }
 };
 
