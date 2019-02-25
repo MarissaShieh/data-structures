@@ -44,6 +44,10 @@ Graph.prototype.addEdge = function(fromValue, toValue) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromValue, toValue) {
+  fromValue = ''+fromValue;
+  toValue = ''+toValue;
+  delete this.directory[fromValue].neighbors[toValue];
+  delete this.directory[toValue].neighbors[fromValue];
 };
 
 // Pass in a callback which will be executed on each node of the graph.
