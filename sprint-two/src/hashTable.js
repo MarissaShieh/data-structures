@@ -6,12 +6,12 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  if(this._storage[index] === undefined) {
+  if(this._storage.get(index) === undefined) {
     var emptyBucket = [];
     this._storage.set(index, emptyBucket);
   }
   var doesntHaveThisKey = true;
-  for(let i = 0; i < this._storage.get(index).length; i++) {
+  for(let i = 0; i < this._storage.get(index).length; i++){
     if(this._storage.get(index)[0] === k) {
       doesntHaveThisKey = false;
       this._storage[index][1] = v;
