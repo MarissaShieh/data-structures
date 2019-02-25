@@ -6,13 +6,21 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  if(!this._storage.hasOwnProperty(index)) {
+  if(this._storage[index] === undefined) {
     var emptyBucket = [];
     this._storage.set(index, emptyBucket);
   }
-  var tuple = [k,v];
-  this._storage[index].push(tuple);
-  //needs to loop and overwrite old string / value
+  var doesntHaveThisKey = true;
+  for(let i = 0; i < this._storage.get(index).length; i++) {
+    if(this._storage.get(index)[0] === k) {
+      doesntHaveThisKey = false;
+      this._storage[index][1] = v;
+    }
+  }
+  if(doesntHaveThisKey) {
+    var tuple = [k,v];
+  this._storage.get(index).push(tuple);
+  }
 };
 
 HashTable.prototype.retrieve = function(k) {
